@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbeff0">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Two Years, Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+<style>
+/* Layout: one soft, centered love note — blush glow, drifting hearts, the letter in a glowing rounded frame, photos in arched windows, clips in a gentle carousel, a quiet "I love you". Single light look on purpose. */
+:root {
+  --blush: #fbeff0;
+  --petal: #f6d7da;
+  --rose: #c76e7e;
+  --rose-deep: #8f3f52;
+  --ink: #4a2d36;
+  --soft: #9a7680;
+  --f-script: "Pinyon Script", "Snell Roundhand", "Apple Chancery", cursive;
+  --f-serif: "Cormorant Garamond", "Garamond", "Iowan Old Style", Georgia, serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--blush); color: var(--ink);
+  font-family: var(--f-serif); font-size: 19px; line-height: 1.6; overflow-x: hidden;
+}
+.glow { position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 15% 10%, rgba(246,215,218,.95), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 90% 35%, rgba(240,200,210,.7), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(248,224,214,.9), transparent 70%); }
+#hearts { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+main { position: relative; z-index: 2; }
+.wrap { max-width: 720px; margin: 0 auto; text-align: center;
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 56px; }
+.script { font-family: var(--f-script); font-weight: 400; color: var(--rose-deep); }
+h2 { font-family: var(--f-script); font-weight: 400; font-size: clamp(44px, 11vw, 66px); line-height: 1.1; margin: 0; color: var(--rose-deep); }
+.sub { font-style: italic; color: var(--soft); margin: 6px auto 0; max-width: 34ch; }
+.divider { width: 120px; height: 18px; margin: 0 auto; color: var(--rose); opacity: .7; }
+
+/* Hero */
+.hero { padding-block: 80px 40px; display: grid; justify-items: center; gap: 10px; }
+.hero .to { font-style: italic; letter-spacing: .08em; color: var(--soft); font-size: 18px; }
+.hero h1 { font-family: var(--f-script); font-weight: 400; font-size: clamp(76px, 22vw, 150px); line-height: 1.25; margin: 0; padding: 0 .3em; overflow: visible; color: var(--rose-deep); }
+.hero .years { font-size: clamp(20px, 5vw, 26px); letter-spacing: .32em; text-transform: uppercase; color: var(--ink); margin: 0; }
+.days { margin-top: 22px; font-size: 18px; color: var(--ink); }
+.days b { font-weight: 500; font-size: 30px; color: var(--rose-deep); font-variant-numeric: tabular-nums; }
+.open-btn {
+  margin-top: 26px; border: none; cursor: pointer; border-radius: 999px; padding: 14px 30px;
+  background: var(--rose); color: #fff; font: italic 500 19px var(--f-serif); letter-spacing: .02em;
+  box-shadow: 0 10px 26px -8px rgba(199,110,126,.65); transition: transform .3s, box-shadow .3s;
+}
+.open-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(199,110,126,.75); }
+.open-btn:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 4px; }
+.timer { margin-top: 26px; display: grid; gap: 12px; justify-items: center; }
+.timer .lead { font-style: italic; color: var(--soft); font-size: 17px; }
+.units { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; width: min(520px, 100%); }
+.unit { background: rgba(255,255,255,.6); border-radius: 18px; padding: 14px 4px 10px; box-shadow: 0 0 0 1px rgba(199,110,126,.15), 0 12px 24px -16px rgba(143,63,82,.5); }
+.unit b { display: block; font-weight: 500; font-size: clamp(26px, 7vw, 40px); line-height: 1; color: var(--rose-deep); font-variant-numeric: tabular-nums; }
+.unit small { display: block; margin-top: 6px; font-size: clamp(10px, 2.6vw, 12px); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+
+/* Letter video */
+.letterbox { margin: 30px auto 0; max-width: 420px; padding: 10px; border-radius: 28px; background: rgba(255,255,255,.65);
+  box-shadow: 0 0 0 1px rgba(199,110,126,.18), 0 30px 70px -20px rgba(199,110,126,.55); }
+.screen { position: relative; aspect-ratio: 9 / 16; max-height: 76vh; width: 100%; border-radius: 20px; overflow: hidden;
+  background: linear-gradient(170deg, #f3d2d6, #e7b8c0 55%, #d99aa6); }
+.screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.screen .empty { position: absolute; inset: 0; display: grid; place-content: center; gap: 4px; color: #fff; padding: 20px; }
+.screen .empty .script { color: #fff; font-size: 40px; line-height: 1.1; }
+.screen .empty span:last-child { font-style: italic; font-size: 16px; opacity: .9; }
+.sound { font-style: italic; color: var(--soft); font-size: 16px; margin-top: 14px; }
+
+/* Arched photos */
+.gallery { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
+@media (min-width: 620px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.arch { background: none; border: none; padding: 0; cursor: zoom-in; font: inherit; color: inherit; display: grid; gap: 8px; }
+.arch .ph { aspect-ratio: 3 / 4; border-radius: 999px 999px 18px 18px; overflow: hidden; position: relative;
+  background: linear-gradient(170deg, #f3d2d6, #e3aeb8); box-shadow: 0 16px 30px -18px rgba(143,63,82,.55); }
+.arch .ph img, .arch .ph video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s ease; }
+.arch:hover .ph img, .arch:focus-visible .ph img { transform: scale(1.05); }
+.arch:focus-visible { outline: none; }
+.arch:focus-visible .ph { outline: 2px solid var(--rose); outline-offset: 4px; }
+.arch .ph .e { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 30px; }
+.arch .cap { font-style: italic; font-size: 16px; color: var(--soft); line-height: 1.35; }
+.gallery .arch:nth-child(3n+2) { transform: translateY(18px); }
+@media (max-width: 619px) { .gallery .arch:nth-child(3n+2) { transform: none; } .gallery .arch:nth-child(2n) { transform: translateY(18px); } }
+
+/* Clips */
+.reel { display: flex; align-items: center; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px max(20px, env(safe-area-inset-left, 0px)) 16px; scrollbar-width: none; }
+.reel::-webkit-scrollbar { display: none; }
+@media (min-width: 760px) { .reel { justify-content: center; } }
+.clip.wide { flex-basis: min(88%, 440px); aspect-ratio: 16 / 9; }
+.clip.wide video ~ .cap { left: 10px; right: auto; top: 10px; margin: 0; padding: 4px 11px 5px; border-radius: 11px; justify-items: start; text-align: left; }
+.clip.wide .ct1 { font-size: 18px; } .clip.wide .ct2 { font-size: 8.5px; }
+.clip { flex: 0 0 min(60%, 210px); scroll-snap-align: center; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; position: relative;
+  background: linear-gradient(170deg, #f3d2d6, #dca2ae); box-shadow: 0 18px 34px -20px rgba(143,63,82,.6); }
+.clip video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.clip .e { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 30px; }
+.clip .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 12px 12px; color: #fff; font-style: italic; font-size: 16px;
+  background: linear-gradient(transparent, rgba(74,45,54,.55)); text-align: center; }
+.clip .cap { pointer-events: none; }
+.clip video ~ .cap { top: 12px; bottom: auto; left: 0; right: 0; margin: 0 auto; width: max-content; max-width: calc(100% - 28px); padding: 7px 16px 8px;
+  display: grid; justify-items: center; gap: 1px; text-align: center;
+  background: rgba(255,240,242,.18); -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3);
+  border: 1px solid rgba(255,255,255,.4); border-radius: 14px; box-shadow: 0 8px 20px -10px rgba(0,0,0,.45); color: #fff; font-style: normal; }
+.clip .ct1 { font-family: var(--f-script); font-size: 24px; line-height: 1.1; text-shadow: 0 1px 10px rgba(143,63,82,.7); }
+.clip .ct2 { font-family: var(--f-serif); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; opacity: .92; text-wrap: balance; }
+.clip .ct2::after { content: " ♡"; letter-spacing: 0; }
+.swipe { font-style: italic; color: var(--soft); font-size: 15px; }
+
+/* Ending */
+.end { padding-block: 70px 110px; display: grid; justify-items: center; gap: 8px; }
+.end p { font-size: clamp(22px, 5vw, 28px); font-style: italic; max-width: 26ch; margin: 0; text-wrap: balance; }
+.end .ily { font-family: var(--f-script); font-size: clamp(64px, 17vw, 104px); line-height: 1; color: var(--rose-deep); margin-top: 12px; }
+.end .sig { font-size: 18px; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
+.end svg { width: 26px; height: 26px; color: var(--rose); animation: beat 1.6s ease-in-out infinite; }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.18); } 30% { transform: scale(1); } 45% { transform: scale(1.12); } }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 20; background: rgba(74,45,54,.82); backdrop-filter: blur(6px); display: grid; place-items: center; align-content: center; gap: 14px;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.lightbox .big { width: 100%; max-width: 520px; border-radius: 22px; overflow: hidden; }
+.lightbox .big .ph { aspect-ratio: 3 / 4; background: linear-gradient(170deg, #f3d2d6, #e3aeb8); }
+.lightbox .big img, .lightbox .big video { width: 100%; max-height: 74vh; object-fit: contain; display: block; }
+.lightbox p { color: #fff; font-style: italic; margin: 0; font-size: 20px; text-align: center; }
+.lightbox .x { position: absolute; top: max(16px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,.9); color: var(--rose-deep); font-size: 22px; cursor: pointer; }
+
+/* Scroll reveals: only things below the fold get the "pre" state, so the first view is always complete */
+.rv { transition: opacity 1s ease, transform 1.1s cubic-bezier(.2,.7,.2,1), filter 1s ease; transition-delay: var(--d, 0s); }
+.rv.pre { opacity: 0; transform: translateY(36px); }
+.rv.zoom.pre { transform: translateY(30px) scale(.94); }
+.rv.side.pre { transform: translateX(60px); }
+.rv.blur.pre { filter: blur(10px); transform: scale(.96); }
+.gallery .rv.pre { transform: translateY(46px) rotate(var(--tilt, 0deg)); }
+.gallery .arch.rv:nth-child(3n+2):not(.pre) { transform: translateY(18px); }
+@media (max-width: 619px) { .gallery .arch.rv:nth-child(3n+2):not(.pre) { transform: none; } .gallery .arch.rv:nth-child(2n):not(.pre) { transform: translateY(18px); } }
+.divider path:first-child { stroke-dasharray: 120; stroke-dashoffset: 0; transition: stroke-dashoffset 1.4s ease; }
+.divider.pre path:first-child { stroke-dashoffset: 120; }
+.hero > * { animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both; }
+.hero > *:nth-child(2) { animation-delay: .15s; } .hero > *:nth-child(3) { animation-delay: .3s; }
+.hero > *:nth-child(4) { animation-delay: .45s; } .hero > *:nth-child(5) { animation-delay: .6s; }
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } }
+
+/* Entrance: sealed envelope */
+html.locked, html.locked body { overflow: hidden; }
+html.locked:not(.entering) .hero > * { animation-play-state: paused; }
+html.locked #hearts { z-index: 61; }
+.intro { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; align-content: center; gap: 30px;
+  background: var(--blush);
+  background-image: radial-gradient(ellipse 60% 45% at 15% 10%, rgba(246,215,218,.95), transparent 70%), radial-gradient(ellipse 55% 45% at 90% 35%, rgba(240,200,210,.7), transparent 70%), radial-gradient(ellipse 70% 50% at 50% 100%, rgba(248,224,214,.9), transparent 70%);
+  background-attachment: fixed;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px));
+  transition: opacity .9s ease, visibility .9s; }
+.intro.leave { opacity: 0; visibility: hidden; }
+.intro .hello { font-family: var(--f-script); font-size: clamp(44px, 12vw, 64px); color: var(--rose-deep); line-height: 1; margin: 0; text-align: center; }
+.intro .tap { font-style: italic; color: var(--soft); font-size: 17px; margin: 0; animation: breathe 2.4s ease-in-out infinite; }
+@keyframes breathe { 50% { opacity: .45; } }
+.env { position: relative; width: min(330px, 84vw); aspect-ratio: 3 / 2; max-width: 100%; margin-top: 40px; transition: transform .7s ease, opacity .6s ease; }
+.env-back { position: absolute; inset: 0; background: #e9b9c1; border-radius: 6px; box-shadow: 0 30px 50px -22px rgba(143,63,82,.55); }
+.card { position: absolute; left: 7%; right: 7%; top: 6%; height: 88%; background: #fffaf9; border-radius: 4px; z-index: 2;
+  display: grid; place-content: center; text-align: center; gap: 2px; padding: 10px;
+  box-shadow: 0 6px 16px -8px rgba(143,63,82,.35); transition: transform 1.1s cubic-bezier(.2,.7,.2,1) .7s; }
+.card .script { font-size: clamp(30px, 8vw, 40px); line-height: 1.05; }
+.card small { font-style: italic; color: var(--soft); font-size: 15px; }
+.env-front { position: absolute; inset: 0; z-index: 3; border-radius: 6px; background: #f2cdd3;
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%); }
+.env-front::after { content: ""; position: absolute; inset: 0; background: #ecc2c9; clip-path: polygon(0 100%, 50% 50%, 100% 100%); }
+.env-flap { position: absolute; left: 0; right: 0; top: 0; height: 58%; z-index: 4; background: #e4aab4; border-radius: 6px 6px 0 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top center;
+  transition: transform .8s cubic-bezier(.5,0,.3,1), z-index 0s .4s; }
+.seal-btn { position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%); z-index: 5; width: 70px; height: 70px; border-radius: 50%; border: none; cursor: pointer;
+  background: radial-gradient(circle at 35% 30%, #d97f8f, var(--rose) 55%, var(--rose-deep));
+  box-shadow: 0 6px 14px -4px rgba(143,63,82,.6), inset 0 -3px 6px rgba(0,0,0,.18);
+  display: grid; place-items: center; color: #fff5f6; transition: transform .45s ease, opacity .45s ease; animation: pulse 2.4s ease-in-out infinite; }
+.seal-btn svg { width: 30px; height: 30px; }
+.seal-btn:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 5px; }
+@keyframes pulse { 0%,100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.07); } }
+.intro.open .seal-btn { animation: none; transform: translate(-50%, -50%) scale(.3); opacity: 0; pointer-events: none; }
+.intro.open .env-flap { transform: perspective(900px) rotateX(180deg); z-index: 1; }
+.intro.open .card { transform: translateY(-58%); }
+.intro.open .tap { opacity: 0; animation: none; transition: opacity .3s; }
+.intro.leave .env, .intro.leave .hello { transform: translateY(-16px); opacity: 0; }
+.intro .hello { transition: transform .6s ease, opacity .5s ease; }
+
+/* Reasons jar */
+.jar { display: block; margin: 26px auto 0; width: min(190px, 52vw); background: none; border: none; padding: 0; cursor: pointer; }
+.jar svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 18px 24px rgba(143,63,82,.3)); transform-origin: 50% 90%; }
+.jar.shake svg { animation: jarShake .5s ease; }
+@keyframes jarShake { 20% { transform: rotate(-6deg); } 45% { transform: rotate(5deg); } 70% { transform: rotate(-3deg); } 100% { transform: rotate(0); } }
+.jar:focus-visible { outline: none; } .jar:focus-visible svg { filter: drop-shadow(0 0 0 var(--rose)) drop-shadow(0 18px 24px rgba(143,63,82,.3)); outline: 2px solid var(--rose); outline-offset: 6px; border-radius: 20px; }
+.note { position: relative; margin: 22px auto 0; max-width: 340px; background: #fffaf9; padding: 22px 24px 24px; border-radius: 4px;
+  box-shadow: 0 18px 30px -18px rgba(143,63,82,.5); transform: rotate(-1.5deg); }
+.note::before { content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 20px; transform: translateX(-50%) rotate(2deg); background: rgba(242,196,203,.7); }
+.note.pop { animation: notePop .6s cubic-bezier(.3,1.5,.5,1); }
+@keyframes notePop { 0% { transform: translateY(-60px) rotate(-8deg) scale(.6); opacity: 0; } 100% { transform: rotate(-1.5deg); opacity: 1; } }
+.note-n { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--rose); font-variant-numeric: tabular-nums; }
+.note-t { font-size: 22px; line-height: 1.35; margin: 8px 0 0; color: var(--ink); font-style: italic; text-wrap: balance; }
+
+/* Love coupons */
+.coupons { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding: 30px max(20px, env(safe-area-inset-left, 0px)) 18px; }
+.coupons::-webkit-scrollbar { display: none; }
+.coupon { flex: 0 0 min(72%, 250px); scroll-snap-align: center; position: relative; border: none; cursor: pointer; text-align: left; font: inherit; color: var(--ink);
+  background:
+    radial-gradient(circle at 0 50%, var(--blush) 11px, transparent 12px),
+    radial-gradient(circle at 100% 50%, var(--blush) 11px, transparent 12px),
+    linear-gradient(135deg, #fffaf9, #fbe6e9);
+  border-radius: 14px; padding: 18px 22px 16px; display: flex; flex-direction: column; gap: 4px; min-height: 196px;
+  box-shadow: 0 16px 26px -18px rgba(143,63,82,.55); transition: transform .25s ease, filter .4s ease; }
+.coupon:active { transform: scale(.97); }
+.coupon:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+.coupon .ct { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--rose); }
+.coupon b { font-family: var(--f-script); font-weight: 400; font-size: 34px; line-height: 1.1; color: var(--rose-deep); }
+.coupon .cd { font-style: italic; font-size: 15px; color: var(--soft); line-height: 1.35; }
+.coupon .cf { margin-top: auto; padding-top: 10px; border-top: 1.5px dashed rgba(199,110,126,.35); display: flex; justify-content: space-between; gap: 8px;
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+.coupon .stamp { position: absolute; right: 14px; top: 34%; transform: rotate(-14deg) scale(1.6); opacity: 0; pointer-events: none;
+  border: 2.5px solid var(--rose); color: var(--rose); border-radius: 8px; padding: 4px 10px; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; background: rgba(255,250,249,.8); }
+.coupon.armed .cf .act { color: var(--rose-deep); font-weight: 600; }
+.coupon.used { filter: saturate(.55); }
+.coupon.used .stamp { opacity: 1; transform: rotate(-14deg) scale(1); transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; }
+
+/* Love wordle */
+.board { display: grid; gap: 6px; justify-content: center; margin-top: 26px; }
+.row { display: grid; grid-template-columns: repeat(5, clamp(46px, 13vw, 58px)); gap: 6px; }
+.row.shake { animation: shake .45s; }
+@keyframes shake { 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
+.tile { aspect-ratio: 1; display: grid; place-items: center; border-radius: 12px; background: rgba(255,255,255,.6);
+  box-shadow: inset 0 0 0 1.5px rgba(199,110,126,.25); font: 500 clamp(24px, 6.5vw, 30px) var(--f-serif); color: var(--ink); text-transform: uppercase; }
+.tile.filled { box-shadow: inset 0 0 0 2px var(--rose); animation: popin .12s ease; }
+@keyframes popin { 50% { transform: scale(1.08); } }
+.tile.flip { animation: flip .5s ease both; animation-delay: var(--fd, 0s); }
+@keyframes flip { 0% { transform: rotateX(0); } 50% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+.tile.hit, .key.hit { background: var(--rose); color: #fff; box-shadow: none; }
+.tile.near, .key.near { background: #ebb69f; color: #fff; box-shadow: none; }
+.tile.miss, .key.miss { background: #d8c3c7; color: #fff; box-shadow: none; }
+.tile.win { animation: bounce .6s ease both; animation-delay: var(--fd, 0s); }
+@keyframes bounce { 40% { transform: translateY(-14px); } 70% { transform: translateY(3px); } }
+.gmsg { min-height: 1.6em; font-style: italic; color: var(--rose-deep); margin: 16px 0 6px; font-size: 19px; }
+.kb { display: grid; gap: 7px; max-width: 480px; margin: 0 auto; }
+.kb .kr { display: flex; justify-content: center; gap: 5px; }
+.key { flex: 1 1 0; min-width: 0; max-width: 42px; height: 50px; border: none; border-radius: 10px; cursor: pointer;
+  background: rgba(255,255,255,.75); color: var(--ink); font: 500 17px var(--f-serif); text-transform: uppercase;
+  box-shadow: 0 4px 10px -6px rgba(143,63,82,.4); transition: transform .1s; padding: 0; }
+.key:active { transform: scale(.92); }
+.key.wide { flex: 1.6 1 0; max-width: 66px; font-size: 13px; letter-spacing: .04em; }
+.key:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+.round { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--rose); margin: 10px 0 0; font-variant-numeric: tabular-nums; }
+.again { margin: 4px 0 18px; border: 1.5px solid var(--rose); background: none; color: var(--rose-deep); border-radius: 999px; padding: 10px 22px; font: italic 500 17px var(--f-serif); cursor: pointer; }
+
+/* Win celebration */
+.love-ov { position: fixed; inset: 0; z-index: 65; display: grid; place-items: center; align-content: center; gap: 6px; text-align: center; cursor: pointer; overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(255,240,242,.92), rgba(246,215,218,.9) 55%, rgba(225,160,174,.92));
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity .5s ease;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.love-ov.show { opacity: 1; }
+.love-ov .big { z-index: 2; position: relative; width: min(190px, 48vw); aspect-ratio: 1; display: grid; place-items: center; }
+.love-ov .big svg { width: 100%; height: 100%; color: var(--rose); filter: drop-shadow(0 14px 22px rgba(143,63,82,.4)); transform: scale(0); transform-origin: 50% 55%; overflow: visible; }
+.love-ov.show .big svg { animation: heartIn .9s cubic-bezier(.3,1.6,.5,1) forwards, heartBeat 1.1s ease-in-out 1s infinite; }
+@keyframes heartIn { to { transform: scale(1); } }
+@keyframes heartBeat { 0%,100% { transform: scale(1); } 14% { transform: scale(1.14); } 28% { transform: scale(1); } 42% { transform: scale(1.09); } }
+.love-ov .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(199,110,126,.55); transform: scale(.4); opacity: 0; }
+.love-ov.show .ring { animation: ripple 2.2s ease-out infinite; }
+.love-ov.show .ring:nth-child(2) { animation-delay: .7s; } .love-ov.show .ring:nth-child(3) { animation-delay: 1.4s; }
+@keyframes ripple { 0% { transform: scale(.5); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
+.love-ov .say, .love-ov .say2, .love-ov .tapon { position: relative; z-index: 2; }
+.love-ov .say { font-family: var(--f-script); font-size: clamp(48px, 13vw, 76px); line-height: 1.1; color: var(--rose-deep); margin: 18px 0 0; opacity: 0; filter: blur(10px); transform: translateY(14px); }
+.love-ov.show .say { animation: sayIn 1.1s ease .7s forwards; }
+.love-ov .say2 { font-style: italic; font-size: 20px; color: var(--ink); margin: 0; opacity: 0; }
+.love-ov.show .say2 { animation: fadeIn .8s ease 1.4s forwards; }
+.love-ov .tapon { font-style: italic; font-size: 15px; color: var(--soft); margin-top: 26px; opacity: 0; }
+.love-ov.show .tapon { animation: fadeIn .8s ease 2.6s forwards, breathe 2.4s ease-in-out 3.4s infinite; }
+@keyframes sayIn { to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes fadeIn { to { opacity: 1; } }
+/* Photo moment (Maple) */
+.pol-wrap { position: relative; z-index: 2; width: min(230px, 58vw); }
+.pol { background: #fffaf9; padding: 10px 10px 0; border-radius: 4px; box-shadow: 0 24px 40px -18px rgba(143,63,82,.6);
+  transform: translateY(-110vh) rotate(-24deg); transform-origin: 50% -40px; }
+.pol img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 60%; border-radius: 2px; }
+.pol .pc { display: block; text-align: center; font-family: var(--f-script); font-size: 30px; color: var(--rose-deep); padding: 4px 0 8px; }
+.love-ov.show .pol { animation: polDrop 1.1s cubic-bezier(.3,1.3,.5,1) .15s forwards, polSwing 3.2s ease-in-out 1.3s infinite; }
+@keyframes polDrop { to { transform: translateY(0) rotate(4deg); } }
+@keyframes polSwing { 0%,100% { transform: rotate(4deg); } 50% { transform: rotate(-3deg); } }
+.paw { position: absolute; color: var(--rose); font-size: 26px; opacity: 0; transform: scale(0) rotate(var(--pr, 0deg)); }
+.paw.p1 { left: -34px; top: 18%; --pr: -25deg; } .paw.p2 { right: -32px; top: 6%; --pr: 20deg; font-size: 22px; }
+.paw.p3 { left: -22px; bottom: 16%; --pr: -10deg; font-size: 20px; } .paw.p4 { right: -38px; bottom: 30%; --pr: 30deg; }
+.love-ov.show .paw { animation: pawPop .5s cubic-bezier(.3,1.6,.5,1) forwards; }
+.love-ov.show .paw.p1 { animation-delay: .8s; } .love-ov.show .paw.p2 { animation-delay: 1s; } .love-ov.show .paw.p3 { animation-delay: 1.2s; } .love-ov.show .paw.p4 { animation-delay: 1.4s; }
+@keyframes pawPop { to { opacity: .85; transform: scale(1) rotate(var(--pr, 0deg)); } }
+.love-ov.photo .say { margin-top: 8px; font-size: clamp(40px, 11vw, 60px); }
+.love-ov.photo.show .say { animation-delay: 1.1s; } .love-ov.photo.show .say2 { animation-delay: 1.6s; }
+.fall svg { display: block; }
+.fall { z-index: 1; position: absolute; top: -40px; left: var(--x); font-size: var(--s); color: var(--c); pointer-events: none; opacity: .9;
+  animation: fall var(--t) linear var(--d) forwards; }
+@keyframes fall { 0% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(var(--sw), 55vh) rotate(var(--r)); } 100% { transform: translate(0, 115vh) rotate(calc(var(--r) * 2)); opacity: .2; } }
+
+/* Scratch-off heart */
+.scratch { position: relative; width: min(340px, 88vw); aspect-ratio: 20 / 18.35; margin: 30px auto 0; max-width: 100%;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='2 3 20 18.35'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='2 3 20 18.35'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 18px 26px rgba(143,63,82,.35)); }
+.gift { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; padding: 0 18% 14%; text-align: center; gap: 2px;
+  background: radial-gradient(circle at 50% 42%, #fffaf9 18%, #f9dde2 52%, #eeb3be 92%); }
+.gift .g1 { font-style: italic; color: var(--soft); font-size: clamp(14px, 3.8vw, 17px); }
+.gift .g2 { font-family: var(--f-script); color: var(--rose-deep); font-size: clamp(36px, 10vw, 46px); line-height: 1.05; }
+.gift .g3 { font-size: clamp(16px, 4.4vw, 20px); color: var(--ink); letter-spacing: .04em; }
+.gift .g4 { margin-top: 6px; font-size: clamp(10px, 2.8vw, 12px); letter-spacing: .2em; text-transform: uppercase; color: var(--rose); }
+#foil { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity .8s ease; }
+#foil.gone { opacity: 0; pointer-events: none; }
+.scratch.done .gift > * { animation: giftPop .7s cubic-bezier(.3,1.5,.5,1) both; }
+.scratch.done .gift .g2 { animation-delay: .1s; } .scratch.done .gift .g3 { animation-delay: .2s; } .scratch.done .gift .g4 { animation-delay: .3s; }
+@keyframes giftPop { from { transform: scale(.8); opacity: .3; } }
+.after { font-style: italic; color: var(--rose-deep); font-size: 19px; margin: 16px 0 4px; min-height: 1.6em; }
+.plan { margin: 22px auto 0; max-width: 440px; text-align: left; background: rgba(255,255,255,.62); border-radius: 26px; padding: 22px 22px 8px;
+  box-shadow: 0 0 0 1px rgba(199,110,126,.15), 0 24px 40px -26px rgba(143,63,82,.5); }
+.plan-day { font-family: var(--f-script); font-size: 40px; line-height: 1.1; color: var(--rose-deep); text-align: center; margin: 0 0 10px; }
+.plan-day.second { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(199,110,126,.18); }
+.tl { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
+.tl::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 26px; width: 1.5px; background: linear-gradient(var(--petal), var(--rose)); }
+.tl li { position: relative; display: grid; gap: 0; padding-bottom: 18px; min-width: 0; }
+.tl li::before { content: ""; position: absolute; left: -24px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--blush); box-shadow: inset 0 0 0 2px var(--rose); }
+.tl li.star::before { content: "♥"; width: auto; height: auto; background: none; box-shadow: none; color: var(--rose); font-size: 17px; left: -26px; top: 1px; line-height: 1; }
+.tl .when { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--rose); font-variant-numeric: tabular-nums; }
+.tl b { font-weight: 500; font-size: 20px; line-height: 1.25; color: var(--ink); }
+.tl li > span:last-child { font-style: italic; color: var(--soft); font-size: 16px; line-height: 1.35; }
+.plan.in li { animation: planIn .6s cubic-bezier(.2,.7,.2,1) both; }
+.plan.in li:nth-child(2) { animation-delay: .1s; } .plan.in li:nth-child(3) { animation-delay: .2s; } .plan.in li:nth-child(4) { animation-delay: .3s; }
+.plan.in li:nth-child(5) { animation-delay: .4s; } .plan.in li:nth-child(6) { animation-delay: .5s; } .plan.in li:nth-child(7) { animation-delay: .6s; } .plan.in li:nth-child(8) { animation-delay: .7s; }
+.plan.in .tl + .plan-day + .tl li { animation-delay: calc(.8s + var(--i, 0) * .1s); }
+@keyframes planIn { from { opacity: .001; transform: translateY(14px); } }
+#revealAll { font-size: 15px; padding: 8px 18px; border-color: rgba(199,110,126,.5); }
+
+.mute { position: fixed; z-index: 15; right: max(14px, env(safe-area-inset-right, 0px)); top: calc(14px + env(safe-area-inset-top, 0px));
+  width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; background: rgba(255,255,255,.75); color: var(--rose-deep);
+  box-shadow: 0 6px 16px -8px rgba(143,63,82,.5); display: grid; place-items: center; backdrop-filter: blur(4px); }
+.mute svg { width: 20px; height: 20px; }
+.mute:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-btn, .intro .tap { animation: none; }
+  .tile, .tile.flip, .tile.win, .row.shake, .plan.in li, .jar svg, .note { animation: none !important; }
+  .love-ov * { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
+  .fall { display: none; }
+  .env-flap, .card, .env { transition: none; }
+  .rv, .rv.pre { transition: none; opacity: 1; transform: none; filter: none; }
+  .hero > * { animation: none; }
+  html { scroll-behavior: auto; }
+  .end svg { animation: none; }
+  .arch .ph img, .open-btn { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<canvas id="hearts" aria-hidden="true"></canvas>
+
+<div class="intro" id="intro">
+  <p class="hello">for my love</p>
+  <div class="env" id="env">
+    <div class="env-back"></div>
+    <div class="card"><span class="script">Happy two years</span><small>I love you</small></div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <button class="seal-btn" id="sealBtn" aria-label="Open the letter">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </button>
+  </div>
+  <p class="tap">tap the heart to open</p>
+</div>
+
+<main>
+  <header class="wrap hero">
+    <span class="to">for my love</span>
+    <h1>us</h1>
+    <p class="years">two years</p>
+    <div class="timer" aria-label="Time together">
+      <span class="lead">I've loved you for</span>
+      <div class="units">
+        <div class="unit"><b id="tMo">0</b><small>months</small></div>
+        <div class="unit"><b id="tD">0</b><small>days</small></div>
+        <div class="unit"><b id="tH">00</b><small>hours</small></div>
+        <div class="unit"><b id="tM">00</b><small>minutes</small></div>
+        <div class="unit"><b id="tS">00</b><small>seconds</small></div>
+      </div>
+      <span class="lead">and counting ♡</span>
+    </div>
+    <button class="open-btn" id="openBtn">Open your letter ♡</button>
+  </header>
+
+  <section class="wrap" id="letter">
+    <svg class="divider" viewBox="0 0 120 18" aria-hidden="true"><path d="M0 9h46M74 9h46" stroke="currentColor" stroke-width="1"/><path d="M60 15s-7-4.3-8.8-8.4C49.9 3.6 51.8 1 54.8 1c2 0 3.3 1.1 5.2 2.8C61.9 2.1 63.2 1 65.2 1c3 0 4.9 2.6 3.6 5.6C67 10.7 60 15 60 15z" fill="currentColor"/></svg>
+    <h2>My letter to you</h2>
+    <p class="sub">I wrote down everything I feel, then I said it out loud for you.</p>
+    <div class="letterbox"><div class="screen" id="vidScreen"></div></div>
+    <p class="sound">turn your sound on ♡</p>
+  </section>
+
+  <section class="wrap" id="photos">
+    <h2>Us, lately</h2>
+    <p class="sub">A few of my favourite moments with you.</p>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section id="clips">
+    <div class="wrap">
+      <h2>Little moments</h2>
+      <p class="sub">The ones I replay when I miss you.</p>
+    </div>
+    <div class="reel" id="reel"></div>
+    <div class="wrap"><span class="swipe">swipe ♡</span></div>
+  </section>
+
+  <section class="wrap" id="reasons">
+    <h2>Reasons I love you</h2>
+    <p class="sub">Tap the jar. There's always another one.</p>
+    <button class="jar" id="jar" type="button" aria-label="Take a reason from the jar">
+      <svg viewBox="0 0 200 230" aria-hidden="true">
+        <rect x="62" y="8" width="76" height="22" rx="6" fill="#d98a99"/>
+        <rect x="56" y="26" width="88" height="10" rx="4" fill="#c76e7e"/>
+        <path d="M60 36 Q40 50 38 80 L38 196 Q38 222 64 222 L136 222 Q162 222 162 196 L162 80 Q160 50 140 36 Z" fill="rgba(255,255,255,.55)" stroke="#e7a3b0" stroke-width="3"/>
+        <g class="notes">
+          <rect x="54" y="170" width="34" height="22" rx="3" fill="#f6d7da" transform="rotate(-12 71 181)"/>
+          <rect x="96" y="176" width="36" height="22" rx="3" fill="#fbe7d9" transform="rotate(10 114 187)"/>
+          <rect x="70" y="146" width="34" height="22" rx="3" fill="#fff" transform="rotate(6 87 157)"/>
+          <rect x="110" y="140" width="32" height="22" rx="3" fill="#f2c4cb" transform="rotate(-8 126 151)"/>
+          <rect x="58" y="118" width="32" height="22" rx="3" fill="#fbe7d9" transform="rotate(14 74 129)"/>
+          <rect x="98" y="110" width="34" height="22" rx="3" fill="#f6d7da" transform="rotate(-4 115 121)"/>
+          <path d="M100 200l-4-3.6C90.6 191.5 87 188.2 87 184.2 87 180.9 89.6 178.3 92.9 178.3c1.9 0 3.7.9 4.9 2.3 1.2-1.4 3-2.3 4.9-2.3 3.3 0 5.9 2.6 5.9 5.9 0 4-3.6 7.3-9 12.2z" fill="#c76e7e" transform="translate(-18 -88) scale(1.1)"/>
+        </g>
+        <path d="M58 70 Q54 120 58 190" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7"/>
+      </svg>
+    </button>
+    <div class="note" id="note" aria-live="polite">
+      <span class="note-n" id="noteN">tap the jar ♡</span>
+      <p class="note-t" id="noteT">I wrote down some of the reasons. There are way more.</p>
+    </div>
+  </section>
+
+  <section id="coupons">
+    <div class="wrap">
+      <h2>Love coupons</h2>
+      <p class="sub">Redeem anytime. No expiry, ever. Tap one twice to use it, then show me.</p>
+    </div>
+    <div class="coupons" id="couponRow"></div>
+    <div class="wrap"><span class="swipe">swipe ♡</span></div>
+  </section>
+
+  <section class="wrap" id="game">
+    <h2>A little game</h2>
+    <p class="sub">Guess the five-letter word. No hints, good luck ♡</p>
+    <p class="round" id="round">Word 1 of 6</p>
+    <div class="board" id="board" aria-label="Guesses"></div>
+    <p class="gmsg" id="gmsg" aria-live="polite">&nbsp;</p>
+    <div class="kb" id="kb"></div>
+  </section>
+
+  <section class="wrap" id="surprise">
+    <h2>One more surprise</h2>
+    <p class="sub">Scratch the heart with your finger.</p>
+    <div class="scratch" id="scratch">
+      <div class="gift">
+        <span class="g1">I'm taking you to</span>
+        <span class="g2">The Pinnacle</span>
+        <span class="g3">Hotel at the Pier</span>
+        <span class="g1">at the Shipyards</span>
+        <span class="g4">one night · harbour view</span>
+      </div>
+      <canvas id="foil" aria-label="Scratch to reveal your surprise" role="img"></canvas>
+    </div>
+    <p class="after" id="after" aria-live="polite">&nbsp;</p>
+    <div class="plan" id="plan" hidden>
+      <p class="plan-day">Our Wednesday</p>
+      <ol class="tl">
+        <li><span class="when">Morning</span><b>Coffee date</b><span>Perfecto Café or Caffè Artigiano, your pick</span></li>
+        <li><span class="when">After coffee</span><b>Check in at the hotel</b><span>The Pinnacle, harbour view</span></li>
+        <li><span class="when">Late morning</span><b>Explore</b><span>wander the Shipyards together</span></li>
+        <li><span class="when">Late morning</span><b>The Polygon Gallery</b><span>they have a photo booth ♡</span></li>
+        <li><span class="when">Lunch</span><b>Lonsdale Quay Market</b><span>grab whatever looks good</span></li>
+        <li><span class="when">Afternoon</span><b>Chill at the hotel</b><span>no plans, just us</span></li>
+        <li><span class="when">Before or after dinner</span><b>Swim &amp; hot tub</b><span>the hotel's indoor pool, bring your swimsuit</span></li>
+        <li class="star"><span class="when">9:00 PM</span><b>Dinner at Dovetail</b><span>take the SeaBus across, or drive</span></li>
+      </ol>
+      <p class="plan-day second">Our Thursday</p>
+      <ol class="tl">
+        <li><span class="when">Morning</span><b>Breakfast together</b><span>a slow start with a harbour view</span></li>
+        <li><span class="when">Before 11</span><b>Check out</b><span>no rush, just pack up</span></li>
+        <li><span class="when">Late morning</span><b>Coffee, your choice</b><span>wherever you're craving</span></li>
+        <li><span class="when">Late morning</span><b>Explore some more</b><span>everything we missed yesterday</span></li>
+        <li class="star"><span class="when">Lunch</span><b>Lonsdale Quay Market, round two</b><span>because once wasn't enough</span></li>
+      </ol>
+    </div>
+    <button class="again" id="revealAll" type="button">Reveal it</button>
+  </section>
+
+  <footer class="wrap end">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <p>Two years down, forever to go. Happy anniversary, mahal.</p>
+    <span class="ily">I love you</span>
+    <span class="sig">Aljon</span>
+  </footer>
+</main>
+
+<button class="mute" id="muteBtn" aria-label="Turn sounds off" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" stroke="none"/><path id="waves" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path id="cross" d="M16 9l5 6M21 9l-5 6" style="display:none"/></svg>
+</button>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="x" id="lbClose" aria-label="Close">×</button>
+  <div class="big" id="lbBig"></div>
+  <p id="lbCap"></p>
+</div>
+
+<script>
+/* ===== Edit everything here ===== */
+const START = "2024-11-07";            // the day you got together
+const MAIN_VIDEO = "";                 // e.g. "media/letter.mp4"
+const PHOTOS = [
+  { src: "media/photo1.jpg", caption: "our first picture together" },
+  { src: "media/photo-pv.jpg", caption: "Puerto Vallarta, our first trip abroad", pos: "50% 78%" },
+  { src: "media/photo-cheam.jpg", caption: "Mt. Cheam, bucket list hike completed", pos: "52% 70%" },
+  { src: "", caption: "road trip with you" },
+  { src: "", caption: "every date feels like the first" },
+  { src: "", caption: "us, being us" }
+];
+const CLIPS = [
+  { src: "media/clip-bruno.mp4", poster: "media/clip-bruno.jpg", caption: "Bruno Mars, our first concert together" },
+  { src: "media/clip-funny.mp4", poster: "media/clip-funny.jpg", caption: "Funny moment, us being us", wide: true },
+  { src: "", caption: "the sunset we chased" },
+  { src: "", caption: "you laughing at me" }
+];
+/* ================================= */
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isVideo = s => /\.(mp4|mov|webm|m4v)$/i.test(s);
+
+// Days together
+(function () {
+  const start = new Date(START + "T00:00:00");
+  const pad = n => String(n).padStart(2, "0");
+  const els = ["tMo", "tD", "tH", "tM", "tS"].map(id => document.getElementById(id));
+  function tick() {
+    const now = new Date();
+    let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    let anchor = new Date(start); anchor.setMonth(start.getMonth() + months);
+    if (anchor > now) { months--; anchor = new Date(start); anchor.setMonth(start.getMonth() + months); }
+    let s = Math.max(0, Math.floor((now - anchor) / 1000));
+    const d = Math.floor(s / 86400); s -= d * 86400;
+    const h = Math.floor(s / 3600); s -= h * 3600;
+    const m = Math.floor(s / 60); s -= m * 60;
+    [Math.max(0, months), d, pad(h), pad(m), pad(s)].forEach((v, i) => { if (els[i].textContent != v) els[i].textContent = v; });
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// Letter
+document.getElementById("vidScreen").innerHTML = MAIN_VIDEO
+  ? `<video id="mainVid" src="${MAIN_VIDEO}" controls playsinline preload="metadata"></video>`
+  : `<div class="empty"><span class="script">your letter</span><span>video goes here</span></div>`;
+document.getElementById("openBtn").addEventListener("click", () => {
+  sfx.letter();
+  letter.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  const v = document.getElementById("mainVid"); if (v) v.play().catch(() => {});
+});
+
+// Photos
+gallery.innerHTML = PHOTOS.map((p, i) => {
+  const inner = p.src
+    ? (isVideo(p.src) ? `<video src="${p.src}" muted playsinline loop autoplay></video>` : `<img src="${p.src}" alt="${p.caption}" loading="lazy"${p.pos ? ` style="object-position:${p.pos}"` : ""}>`)
+    : `<span class="e">♡</span>`;
+  return `<button class="arch" data-i="${i}"><div class="ph">${inner}</div><span class="cap">${p.caption}</span></button>`;
+}).join("");
+
+// Clips
+reel.innerHTML = CLIPS.map(c => c.src
+  ? `<div class="clip${c.wide ? " wide" : ""}"><video src="${c.src}"${c.poster ? ` poster="${c.poster}"` : ""} controls playsinline preload="metadata"></video><div class="cap">${(([t, ...r]) => r.length ? `<span class="ct1">${t}</span><span class="ct2">${r.join(",").trim()}</span>` : `<span class="ct1">${t}</span>`)(c.caption.split(","))}</div></div>`
+  : `<div class="clip"><span class="e">♡</span><div class="cap">${c.caption}</div></div>`).join("");
+
+// Lightbox
+gallery.addEventListener("click", e => {
+  const b = e.target.closest(".arch"); if (!b) return;
+  const p = PHOTOS[+b.dataset.i];
+  lbBig.innerHTML = p.src ? (isVideo(p.src) ? `<video src="${p.src}" controls playsinline autoplay></video>` : `<img src="${p.src}" alt="${p.caption}">`) : `<div class="ph"></div>`;
+  lbCap.textContent = p.caption; sfx.tap();
+  lightbox.hidden = false;
+});
+const closeLb = () => { if (!lightbox.hidden) sfx.close(); lightbox.hidden = true; lbBig.innerHTML = ""; };
+lbClose.addEventListener("click", closeLb);
+lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLb(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && !lightbox.hidden) closeLb(); });
+
+// Soft sound effects (synthesized, no files)
+const sfx = (function () {
+  let ctx, master, muted = false;
+  try { muted = localStorage.getItem("anniv-muted") === "1"; } catch (e) {}
+  function init() {
+    if (ctx) { if (ctx.state === "suspended") ctx.resume(); return true; }
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return false;
+    ctx = new AC(); master = ctx.createGain(); master.gain.value = .32; master.connect(ctx.destination); return true;
+  }
+  function tone(freq, at, dur, vol = .5, type = "sine", glideTo) {
+    const t = ctx.currentTime + at, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t); if (glideTo) o.frequency.exponentialRampToValueAtTime(glideTo, t + dur * .6);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .012); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .05);
+  }
+  function paper(at, dur = .45, vol = .35) {
+    const t = ctx.currentTime + at, len = Math.floor(ctx.sampleRate * dur), buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len) * (.6 + .4 * Math.sin(i / 900));
+    const src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    src.buffer = buf; f.type = "bandpass"; f.frequency.value = 2600; f.Q.value = .8; g.gain.value = vol;
+    src.connect(f); f.connect(g); g.connect(master); src.start(t);
+  }
+  const play = fn => () => { if (muted || !init()) return; fn(); };
+  return {
+    open: play(() => {
+      tone(620, 0, .14, .5, "sine", 300);                     // seal pop
+      paper(.12, .5, .3);                                      // flap unfolding
+      [1318.5, 1661.2, 1975.5, 2637].forEach((f, i) => tone(f, .85 + i * .13, 1.3, .16, "triangle")); // sparkle chime
+    }),
+    jar: play(() => { tone(1760, 0, .12, .12, "sine", 1320); tone(2349, .05, .25, .08, "triangle"); paper(.08, .25, .2); }),
+    stamp: play(() => { tone(140, 0, .18, .45, "sine", 70); paper(0, .12, .25); [1318.5, 1760].forEach((f, i) => tone(f, .15 + i * .1, .7, .12, "triangle")); }),
+    tap: play(() => { tone(1568, 0, .35, .18, "triangle"); tone(2093, .07, .4, .12, "sine"); }),
+    close: play(() => tone(900, 0, .16, .14, "sine", 600)),
+    key: play(() => tone(1200 + Math.random() * 300, 0, .08, .08, "sine")),
+    flip: play(() => [0, 1, 2, 3, 4].forEach(i => tone(880 + i * 110, i * .18, .18, .09, "triangle"))),
+    nope: play(() => { tone(330, 0, .15, .12, "sine", 260); }),
+    win: play(() => [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => tone(f, 1 + i * .11, 1.4, .15, "triangle"))),
+    dog: play(() => {
+      // two happy little yips, then a softer one, then a sparkle
+      const yip = (at, f, d = .13, v = .35) => {
+        const t = ctx.currentTime + at, o = ctx.createOscillator(), o2 = ctx.createOscillator(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
+        o.type = "sawtooth"; o2.type = "square";
+        o.frequency.setValueAtTime(f * .8, t); o.frequency.exponentialRampToValueAtTime(f * 1.25, t + d * .25); o.frequency.exponentialRampToValueAtTime(f * .6, t + d);
+        o2.frequency.setValueAtTime(f * 1.6, t); o2.frequency.exponentialRampToValueAtTime(f * 2.4, t + d * .25); o2.frequency.exponentialRampToValueAtTime(f * 1.2, t + d);
+        lp.type = "lowpass"; lp.frequency.setValueAtTime(3200, t); lp.frequency.exponentialRampToValueAtTime(900, t + d); lp.Q.value = 6;
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+        const g2 = ctx.createGain(); g2.gain.value = .35; o.connect(lp); o2.connect(g2); g2.connect(lp); lp.connect(g); g.connect(master);
+        o.start(t); o2.start(t); o.stop(t + d + .05); o2.stop(t + d + .05);
+      };
+      yip(.55, 820); yip(.75, 900); yip(1.15, 980, .1, .22);
+      [1318.5, 1568, 2093].forEach((f, i) => tone(f, 1.5 + i * .1, 1, .12, "triangle"));
+      [2.4, 2.62].forEach(t => tone(78, t, .22, .45, "sine", 48));
+    }),
+    scratch: play(() => {
+      const t = ctx.currentTime, len = Math.floor(ctx.sampleRate * .06), buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / len);
+      const src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      src.buffer = buf; f.type = "highpass"; f.frequency.value = 3500 + Math.random() * 1500; g.gain.value = .12;
+      src.connect(f); f.connect(g); g.connect(master); src.start(t);
+    }),
+    reveal: play(() => {
+      [[784,0],[988,.12],[1175,.24],[1568,.36],[1976,.52],[2349,.68]].forEach(([f, t]) => tone(f, t, 1.1, .13, "triangle"));
+      [392, 494, 587].forEach(f => tone(f, .1, 2.2, .05, "sine"));
+    }),
+    love: play(() => {
+      // little melody (C E G | A G E | C high) over warm pad, then heartbeats
+      [[523.3,0],[659.3,.22],[784,.44],[880,.74],[784,.96],[659.3,1.18],[1046.5,1.5]].forEach(([f, t]) => { tone(f, t, .9, .14, "triangle"); tone(f * 2, t, .5, .04, "sine"); });
+      [261.6, 329.6, 392].forEach(f => tone(f, 0, 2.6, .05, "sine"));
+      [2.1, 2.32, 3.2, 3.42, 4.3, 4.52].forEach(t => tone(78, t, .22, .5, "sine", 48));
+    }),
+    letter: play(() => [784, 988, 1175].forEach((f, i) => tone(f, i * .1, .9, .18, "triangle"))),
+    toggle() { muted = !muted; try { localStorage.setItem("anniv-muted", muted ? "1" : "0"); } catch (e) {} if (!muted && init()) tone(1318.5, 0, .3, .15, "triangle"); return muted; },
+    get muted() { return muted; }
+  };
+})();
+(function () {
+  const btn = document.getElementById("muteBtn"), w = document.getElementById("waves"), x = document.getElementById("cross");
+  const paint = () => { w.style.display = sfx.muted ? "none" : ""; x.style.display = sfx.muted ? "" : "none"; btn.setAttribute("aria-label", sfx.muted ? "Turn sounds on" : "Turn sounds off"); };
+  btn.addEventListener("click", () => { sfx.toggle(); paint(); }); paint();
+})();
+
+// Entrance envelope
+(function () {
+  const root = document.documentElement, intro = document.getElementById("intro"), mainEl = document.querySelector("main");
+  root.classList.add("locked"); mainEl.inert = true; scrollTo(0, 0);
+  let opened = false;
+  function enter() {
+    if (opened) return; opened = true;
+    intro.classList.add("open"); sfx.open();
+    setTimeout(() => { intro.classList.add("leave"); root.classList.add("entering"); }, reduce ? 300 : 2300);
+    setTimeout(() => {
+      intro.hidden = true; root.classList.remove("locked"); mainEl.inert = false; scrollTo(0, 0); muteBtn.hidden = false;
+    }, reduce ? 900 : 3000);
+  }
+  document.getElementById("sealBtn").addEventListener("click", enter);
+  document.getElementById("env").addEventListener("click", enter);
+})();
+
+// Scroll reveals
+(function () {
+  if (reduce || !("IntersectionObserver" in window)) return;
+  const add = (sel, cls = "", step = 0) => document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add("rv"); if (cls) el.classList.add(cls);
+    if (step) el.style.setProperty("--d", ((i % 3) * step) + "s");
+  });
+  add("section h2"); add("section .sub"); document.querySelectorAll("section .sub").forEach(el => el.style.setProperty("--d", ".15s"));
+  add(".letterbox", "zoom"); add(".sound");
+  add(".arch", "", .14);
+  document.querySelectorAll(".arch").forEach((el, i) => el.style.setProperty("--tilt", (i % 2 ? 3 : -3) + "deg"));
+  add(".clip", "side", .12);
+  add(".swipe"); add(".end > *:not(.ily)"); add(".end .ily", "blur");
+  const targets = [...document.querySelectorAll(".rv, .divider")];
+  const vh = innerHeight;
+  targets.forEach(el => { if (el.getBoundingClientRect().top > vh * .92) el.classList.add("pre"); });
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); }
+  }), { rootMargin: "0px 0px -8% 0px", threshold: .12 });
+  targets.forEach(el => el.classList.contains("pre") && io.observe(el));
+})();
+
+// Reasons jar
+(function () {
+  const REASONS = [
+    "That smile of yours could fix my worst day.",
+    "We can laugh at absolutely nothing and it's still the best part of my day.",
+    "I don't need plans. Being next to you is the plan.",
+    "It's always the tiny moments with you that stay with me.",
+    "Every disagreement somehow makes us closer, not further apart.",
+    "This year wasn't easy, and you held on to me anyway.",
+    "You give me love when I need it, even when I think I don't deserve it.",
+    "Whenever I'm falling apart, you're already there.",
+    "On my hardest days, thinking of you still makes me smile.",
+    "You remind me to slow down and actually be here.",
+    "You make me want to keep a camera roll full of just us.",
+    "I've got a whole list of places to go, and you're on every one of them.",
+    "I can picture our future, and it looks really good.",
+    "I'm not sure where I'm headed, but with you I'm not scared of it.",
+    "You see more in me than I see in myself.",
+    "You're my reason to get up and keep pushing.",
+    "Watching you spoil Maple like he's our little baby.",
+    "Two years in, and I'd choose you all over again."
+  ];
+  const jar = document.getElementById("jar"), note = document.getElementById("note"), n = document.getElementById("noteN"), t = document.getElementById("noteT");
+  let bag = [], count = 0;
+  jar.addEventListener("click", () => {
+    if (!bag.length) bag = REASONS.map((_, i) => i).sort(() => Math.random() - .5);
+    const i = bag.pop(); count++;
+    n.textContent = `Reason #${i + 1} of ${REASONS.length}`; t.textContent = REASONS[i];
+    sfx.jar();
+    jar.classList.remove("shake"); note.classList.remove("pop"); void jar.offsetWidth;
+    if (!reduce) { jar.classList.add("shake"); note.classList.add("pop"); }
+  });
+})();
+
+// Love coupons
+(function () {
+  const COUPONS = [
+    ["Back scratch", "Ten whole minutes, no complaining when you say 'a little lower.'"],
+    ["Massage", "Shoulders, back, whatever needs it. Lotion included."],
+    ["Breakfast in bed", "I cook, I bring it, you don't move."],
+    ["Movie night", "You pick the movie. I don't get a veto."],
+    ["Date of your choice", "Anywhere, anything. I'll plan the rest."],
+    ["Unlimited cuddles", "Valid for one whole day. Couch, bed, anywhere."],
+    ["I do the dishes", "And I won't make it a whole thing."],
+    ["You're right", "Use this to win any argument. Instantly."],
+    ["Forehead kisses", "On demand, for as long as you want."]
+  ];
+  const row = document.getElementById("couponRow");
+  let used = {}; try { used = JSON.parse(localStorage.getItem("anniv-coupons-v3") || "{}"); } catch (e) {}
+  row.innerHTML = COUPONS.map(([title, desc], i) => `<button class="coupon${used[title] ? " used" : ""}" type="button" data-t="${title}">
+      <span class="ct">Love coupon · No. ${String(i + 1).padStart(2, "0")}</span><b>${title}</b><span class="cd">${desc}</span>
+      <span class="cf"><span>Valid forever</span><span class="act">${used[title] ? "Redeemed" : "Tap to redeem"}</span></span>
+      <span class="stamp">Redeemed ♡</span></button>`).join("");
+  row.addEventListener("click", e => {
+    const c = e.target.closest(".coupon"); if (!c || c.classList.contains("used")) return;
+    const act = c.querySelector(".act");
+    if (!c.classList.contains("armed")) {
+      row.querySelectorAll(".armed").forEach(o => { o.classList.remove("armed"); o.querySelector(".act").textContent = "Tap to redeem"; });
+      c.classList.add("armed"); act.textContent = "Tap again to use"; sfx.tap(); return;
+    }
+    c.classList.remove("armed"); c.classList.add("used"); act.textContent = "Redeemed"; sfx.stamp();
+    used[c.dataset.t] = Date.now(); try { localStorage.setItem("anniv-coupons-v3", JSON.stringify(used)); } catch (e) {}
+  });
+})();
+
+// Love wordle
+(function () {
+  const WORDS = [
+    { w: "MAHAL", say: "You're my mahal", sub: "today, tomorrow, always." },
+    { w: "MAPLE", say: "Maple", sub: "our favourite little furball ♡", photo: "media/maple.jpg", caption: "my two favourites ♡", dog: true },
+    { w: "HONEY", say: "Sweet as honey", sub: "that's you, every single day." },
+    { w: "ADORE", say: "I adore you", sub: "more than words can say." },
+    { w: "HEART", say: "You have my heart", sub: "all of it, forever." },
+    { w: "YOURS", say: "Always yours", sub: "happy two years, my love." }
+  ], TRIES = 6;
+  let idx = 0, SECRET = WORDS[0].w;
+  const roundEl = document.getElementById("round");
+  const showRound = () => { roundEl.textContent = `Word ${idx + 1} of ${WORDS.length}`; };
+  const board = document.getElementById("board"), kb = document.getElementById("kb"), msg = document.getElementById("gmsg");
+  let row = 0, cur = "", done = false, busy = false;
+  board.innerHTML = Array.from({ length: TRIES }, () => `<div class="row">${'<div class="tile"></div>'.repeat(5)}</div>`).join("");
+  const rows = [...board.children];
+  const layout = ["qwertyuiop", "asdfghjkl", "+zxcvbnm-"];
+  kb.innerHTML = layout.map(r => `<div class="kr">${[...r].map(k =>
+    k === "+" ? `<button class="key wide" data-k="Enter">enter</button>` :
+    k === "-" ? `<button class="key wide" data-k="Backspace" aria-label="Delete">⌫</button>` :
+    `<button class="key" data-k="${k}">${k}</button>`).join("")}</div>`).join("");
+  const keyEl = k => kb.querySelector(`[data-k="${k.toLowerCase()}"]`);
+  const rank = { miss: 1, near: 2, hit: 3 };
+  function paint() { [...rows[row].children].forEach((t, i) => { t.textContent = cur[i] || ""; t.classList.toggle("filled", !!cur[i]); }); }
+  function score(g) {
+    const res = Array(5).fill("miss"), left = {};
+    [...SECRET].forEach((c, i) => { if (g[i] === c) res[i] = "hit"; else left[c] = (left[c] || 0) + 1; });
+    [...g].forEach((c, i) => { if (res[i] !== "hit" && left[c]) { res[i] = "near"; left[c]--; } });
+    return res;
+  }
+  function submit() {
+    if (cur.length < 5) { msg.textContent = "Five letters, my love"; sfx.nope(); const r = rows[row]; r.classList.remove("shake"); void r.offsetWidth; r.classList.add("shake"); return; }
+    busy = true; const g = cur, res = score(g), tiles = [...rows[row].children];
+    sfx.flip();
+    tiles.forEach((t, i) => { t.style.setProperty("--fd", (i * .18) + "s"); t.classList.add("flip");
+      setTimeout(() => { t.classList.add(res[i]);
+        const k = keyEl(g[i]); const was = ["hit", "near", "miss"].find(c => k.classList.contains(c));
+        if (!was || rank[res[i]] > rank[was]) { k.classList.remove("hit", "near", "miss"); k.classList.add(res[i]); }
+      }, i * 180 + 250); });
+    setTimeout(() => {
+      busy = false;
+      if (g === SECRET) {
+        done = true; msg.textContent = "You got it ♡"; sfx.win();
+        tiles.forEach((t, i) => { t.classList.remove("flip"); t.style.setProperty("--fd", (i * .1) + "s"); t.classList.add("win"); });
+        burst();
+        setTimeout(celebrate, reduce ? 300 : 1100);
+      } else if (++row >= TRIES) { done = true; msg.textContent = `It was ${SECRET} ♡`; }
+      else { msg.innerHTML = "&nbsp;"; }
+      cur = "";
+      if (done) {
+        const last = idx === WORDS.length - 1, b = document.createElement("button");
+        b.className = "again"; b.textContent = last ? "Play again from the start" : "Next word ♡";
+        b.onclick = () => { idx = last ? 0 : idx + 1; SECRET = WORDS[idx].w; showRound(); reset(); };
+        msg.after(b);
+      }
+    }, 5 * 180 + 400);
+  }
+  function press(k) {
+    if (done || busy) return;
+    if (k === "Enter") return submit();
+    if (k === "Backspace") { if (cur) { cur = cur.slice(0, -1); paint(); } return; }
+    if (/^[a-z]$/i.test(k) && cur.length < 5) { cur += k.toUpperCase(); sfx.key(); paint(); msg.innerHTML = "&nbsp;"; }
+  }
+  function reset() {
+    row = 0; cur = ""; done = false; msg.innerHTML = "&nbsp;";
+    document.querySelectorAll("#game .again").forEach(b => b.remove());
+    rows.forEach(r => [...r.children].forEach(t => { t.className = "tile"; t.textContent = ""; t.style.removeProperty("--fd"); }));
+    kb.querySelectorAll(".key").forEach(k => k.classList.remove("hit", "near", "miss"));
+  }
+  kb.addEventListener("click", e => { const b = e.target.closest(".key"); if (b) press(b.dataset.k); });
+  addEventListener("keydown", e => {
+    if (document.documentElement.classList.contains("locked") || !lightbox.hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Enter" || e.key === "Backspace" || /^[a-z]$/i.test(e.key)) {
+      const r = document.getElementById("game").getBoundingClientRect();
+      if (r.top < innerHeight && r.bottom > 0) { e.preventDefault(); press(e.key.length === 1 ? e.key.toLowerCase() : e.key); }
+    }
+  });
+  function celebrate() {
+    const W = WORDS[idx];
+    if (W.dog) sfx.dog(); else sfx.love();
+    try { navigator.vibrate && navigator.vibrate([40, 120, 40, 600, 40, 120, 40]); } catch (e) {}
+    const ov = document.createElement("div");
+    ov.className = "love-ov"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-label", "You won");
+    ov.innerHTML = (W.photo ? `<div class="pol-wrap"><span class="paw p1"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10.2" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="14.8" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="19" cy="9" rx="2.2" ry="2.8"/><path d="M12.5 11c-3.2 0-6.2 3.6-6.2 6.4 0 2 1.6 2.9 3.2 2.6 1.1-.2 2-.8 3-.8s1.9.6 3 .8c1.6.3 3.2-.6 3.2-2.6 0-2.8-3-6.4-6.2-6.4z"/></svg></span><span class="paw p2"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10.2" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="14.8" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="19" cy="9" rx="2.2" ry="2.8"/><path d="M12.5 11c-3.2 0-6.2 3.6-6.2 6.4 0 2 1.6 2.9 3.2 2.6 1.1-.2 2-.8 3-.8s1.9.6 3 .8c1.6.3 3.2-.6 3.2-2.6 0-2.8-3-6.4-6.2-6.4z"/></svg></span><span class="paw p3"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10.2" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="14.8" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="19" cy="9" rx="2.2" ry="2.8"/><path d="M12.5 11c-3.2 0-6.2 3.6-6.2 6.4 0 2 1.6 2.9 3.2 2.6 1.1-.2 2-.8 3-.8s1.9.6 3 .8c1.6.3 3.2-.6 3.2-2.6 0-2.8-3-6.4-6.2-6.4z"/></svg></span><span class="paw p4"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10.2" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="14.8" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="19" cy="9" rx="2.2" ry="2.8"/><path d="M12.5 11c-3.2 0-6.2 3.6-6.2 6.4 0 2 1.6 2.9 3.2 2.6 1.1-.2 2-.8 3-.8s1.9.6 3 .8c1.6.3 3.2-.6 3.2-2.6 0-2.8-3-6.4-6.2-6.4z"/></svg></span><div class="pol"><img src="${W.photo}" alt="${W.say}"><span class="pc">${W.caption || W.say}</span></div></div>` : '') + `<div class="big"${W.photo ? ' hidden' : ''}><span class="ring"></span><span class="ring"></span><span class="ring"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e48a9a"/><stop offset="1" stop-color="#b9566a"/></linearGradient></defs><path fill="url(#hg)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/><ellipse cx="7.6" cy="7.4" rx="2.3" ry="1.4" fill="#fff" opacity=".35" transform="rotate(-35 7.6 7.4)"/></svg></div>
+      <p class="say">${WORDS[idx].say}</p><p class="say2">${WORDS[idx].sub}</p><p class="tapon">tap anywhere to keep going ♡</p>`;
+    const cols = ["#c76e7e", "#e7a3b0", "#ebb69f", "#f2c4cb", "#8f3f52"], marks = W.dog ? ["♥", "PAW", "♥", "PAW", "✦"] : ["♥", "♥", "♥", "❀", "✦"];
+    if (W.photo) ov.classList.add("photo");
+    for (let i = 0; i < (reduce ? 0 : 46); i++) {
+      const h = document.createElement("span"); h.className = "fall"; if (marks[i % marks.length] === "PAW") h.innerHTML = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><ellipse cx="6" cy="9" rx="2.2" ry="2.8"/><ellipse cx="10.2" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="14.8" cy="5.6" rx="2.2" ry="2.9"/><ellipse cx="19" cy="9" rx="2.2" ry="2.8"/><path d="M12.5 11c-3.2 0-6.2 3.6-6.2 6.4 0 2 1.6 2.9 3.2 2.6 1.1-.2 2-.8 3-.8s1.9.6 3 .8c1.6.3 3.2-.6 3.2-2.6 0-2.8-3-6.4-6.2-6.4z"/></svg>'; else h.textContent = marks[i % marks.length];
+      h.style.cssText = `--x:${Math.random() * 100}%;--s:${12 + Math.random() * 22}px;--c:${cols[i % cols.length]};--t:${3.5 + Math.random() * 3}s;--d:${Math.random() * 2.5}s;--sw:${(Math.random() * 80 - 40).toFixed(0)}px;--r:${(Math.random() * 120 - 60).toFixed(0)}deg`;
+      ov.appendChild(h);
+    }
+    document.body.appendChild(ov);
+    requestAnimationFrame(() => requestAnimationFrame(() => ov.classList.add("show")));
+    const close = () => { ov.classList.remove("show"); setTimeout(() => ov.remove(), 550); removeEventListener("keydown", onKey); };
+    const onKey = e => { if (e.key === "Escape" || e.key === "Enter") close(); };
+    ov.addEventListener("click", close); addEventListener("keydown", onKey);
+  }
+  function burst() {
+    if (reduce) return;
+    const box = board.getBoundingClientRect();
+    for (let i = 0; i < 22; i++) {
+      const h = document.createElement("span"); h.textContent = "♥";
+      const a = Math.random() * Math.PI * 2, d = 80 + Math.random() * 120;
+      Object.assign(h.style, { position: "fixed", left: box.left + box.width / 2 + "px", top: box.top + box.height / 2 + "px", zIndex: 30, pointerEvents: "none",
+        color: ["#c76e7e", "#e7a3b0", "#ebb69f"][i % 3], fontSize: 14 + Math.random() * 16 + "px", transition: "transform 1.2s cubic-bezier(.2,.7,.2,1), opacity 1.2s ease" });
+      document.body.appendChild(h);
+      requestAnimationFrame(() => requestAnimationFrame(() => { h.style.transform = `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d - 60}px) rotate(${Math.random() * 60 - 30}deg)`; h.style.opacity = "0"; }));
+      setTimeout(() => h.remove(), 1400);
+    }
+  }
+})();
+
+// Scratch-off heart
+(function () {
+  const wrap = document.getElementById("scratch"), c = document.getElementById("foil"), x = c.getContext("2d", { willReadFrequently: true });
+  const after = document.getElementById("after"), btn = document.getElementById("revealAll");
+  let W = 0, H = 0, dpr = 1, done = false, scratched = false, last = null, lastSnd = 0, moves = 0;
+  function paint() {
+    dpr = Math.min(2, devicePixelRatio || 1); W = c.clientWidth; H = c.clientHeight;
+    c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    x.globalCompositeOperation = "source-over";
+    const g = x.createLinearGradient(0, 0, W, H);
+    g.addColorStop(0, "#e9a6b1"); g.addColorStop(.45, "#f8dadd"); g.addColorStop(.55, "#f3c9cf"); g.addColorStop(1, "#cf7d8d");
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    for (let i = 0; i < 260; i++) { x.globalAlpha = Math.random() * .5; x.fillStyle = Math.random() > .5 ? "#fff" : "#b9566a"; x.fillRect(Math.random() * W, Math.random() * H, 1.5, 1.5); }
+    x.globalAlpha = 1; x.fillStyle = "rgba(255,255,255,.92)"; x.textAlign = "center"; x.textBaseline = "middle";
+    x.font = `${Math.round(W * .13)}px "Pinyon Script", "Snell Roundhand", cursive`; x.fillText("scratch me", W / 2, H * .4);
+    x.font = `italic ${Math.round(W * .05)}px "Cormorant Garamond", Georgia, serif`; x.fillText("there's something underneath ♡", W / 2, H * .55);
+  }
+  function pos(e) { const r = c.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+  function line(a, b) {
+    x.globalCompositeOperation = "destination-out"; x.lineCap = "round"; x.lineJoin = "round"; x.lineWidth = Math.max(26, W * .1);
+    x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke();
+  }
+  function cleared() {
+    const d = x.getImageData(0, 0, c.width, c.height).data; let n = 0, t = 0;
+    // only count the middle of the heart, where the message is
+    for (let yy = Math.floor(c.height * .15); yy < c.height * .75; yy += 6) for (let xx = Math.floor(c.width * .2); xx < c.width * .8; xx += 6) { t++; if (d[(yy * c.width + xx) * 4 + 3] < 40) n++; }
+    return n / t;
+  }
+  function finish() {
+    if (done) return; done = true; c.classList.add("gone"); wrap.classList.add("done"); btn.hidden = true;
+    after.textContent = "Pack an overnight bag, mahal ♡"; sfx.reveal();
+    const plan = document.getElementById("plan");
+    setTimeout(() => { plan.hidden = false; plan.classList.add("in"); }, reduce ? 0 : 900);
+    if (!reduce) {
+      const r = wrap.getBoundingClientRect();
+      for (let i = 0; i < 26; i++) {
+        const h = document.createElement("span"); h.textContent = ["♥", "✦", "♥"][i % 3];
+        const a = Math.random() * Math.PI * 2, dist = 90 + Math.random() * 140;
+        Object.assign(h.style, { position: "fixed", left: r.left + r.width / 2 + "px", top: r.top + r.height / 2 + "px", zIndex: 30, pointerEvents: "none",
+          color: ["#c76e7e", "#e7a3b0", "#ebb69f"][i % 3], fontSize: 14 + Math.random() * 18 + "px", transition: "transform 1.4s cubic-bezier(.2,.7,.2,1), opacity 1.4s ease" });
+        document.body.appendChild(h);
+        requestAnimationFrame(() => requestAnimationFrame(() => { h.style.transform = `translate(${Math.cos(a) * dist}px, ${Math.sin(a) * dist - 50}px)`; h.style.opacity = "0"; }));
+        setTimeout(() => h.remove(), 1600);
+      }
+    }
+  }
+  c.addEventListener("pointerdown", e => { if (done) return; c.setPointerCapture(e.pointerId); last = pos(e); line(last, { x: last.x + .1, y: last.y }); scratched = true; });
+  c.addEventListener("pointermove", e => {
+    if (!last || done) return; const p = pos(e); line(last, p); last = p;
+    const now = performance.now(); if (now - lastSnd > 70) { sfx.scratch(); lastSnd = now; }
+    if (++moves % 12 === 0 && cleared() > .5) finish();
+  });
+  const up = () => { last = null; if (!done && scratched && cleared() > .5) finish(); };
+  c.addEventListener("pointerup", up); c.addEventListener("pointercancel", up);
+  btn.addEventListener("click", finish);
+  paint();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!scratched && !done) paint(); });
+  addEventListener("resize", () => { if (!scratched && !done) paint(); });
+})();
+
+// Drifting hearts
+(function () {
+  if (reduce) return;
+  const c = hearts, x = c.getContext("2d");
+  let w, h, list = [];
+  const colors = ["#e7a3b0", "#d98a99", "#f2c4cb", "#c76e7e"];
+  function size() {
+    const d = devicePixelRatio || 1; w = c.clientWidth; h = c.clientHeight;
+    c.width = w * d; c.height = h * d; x.setTransform(d, 0, 0, d, 0, 0);
+    list = Array.from({ length: Math.max(10, Math.round(w / 45)) }, () => make(true));
+  }
+  function make(any) {
+    return { x: Math.random() * w, y: any ? Math.random() * h : h + 20, s: 5 + Math.random() * 9, v: .25 + Math.random() * .5,
+      sway: Math.random() * 6.28, a: .25 + Math.random() * .4, col: colors[Math.floor(Math.random() * colors.length)] };
+  }
+  const HEART = new Path2D("M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+  function heart(cx, cy, s) {
+    const k = (s * 2) / 20;   // s is roughly the half-width
+    x.save(); x.translate(cx - 12 * k, cy - 12 * k); x.scale(k, k); x.fill(HEART); x.restore();
+  }
+  function tick(t) {
+    x.clearRect(0, 0, w, h);
+    for (const p of list) {
+      p.y -= p.v; const px = p.x + Math.sin(p.sway + t / 1600) * 14;
+      x.globalAlpha = p.a; x.fillStyle = p.col; heart(px, p.y, p.s);
+      if (p.y < -20) Object.assign(p, make(false));
+    }
+    requestAnimationFrame(tick);
+  }
+  size(); addEventListener("resize", size); requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
