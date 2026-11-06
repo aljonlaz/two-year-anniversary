@@ -329,6 +329,11 @@ html.locked #hearts { z-index: 61; }
 .plan { margin: 22px auto 0; max-width: 440px; text-align: left; background: rgba(255,255,255,.62); border-radius: 26px; padding: 22px 22px 8px;
   box-shadow: 0 0 0 1px rgba(199,110,126,.15), 0 24px 40px -26px rgba(143,63,82,.5); }
 .plan-day { font-family: var(--f-script); font-size: 40px; line-height: 1.1; color: var(--rose-deep); text-align: center; margin: 0 0 10px; }
+.secret { position: relative; }
+.secret .tl { filter: blur(9px); -webkit-user-select: none; user-select: none; pointer-events: none; opacity: .85; }
+.secret-tag { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap;
+  background: rgba(255,250,249,.92); color: var(--rose-deep); border-radius: 999px; padding: 8px 18px;
+  font-style: italic; font-size: 17px; box-shadow: 0 8px 20px -10px rgba(143,63,82,.5); }
 .plan-day.second { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(199,110,126,.18); }
 .tl { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
 .tl::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 26px; width: 1.5px; background: linear-gradient(var(--petal), var(--rose)); }
@@ -487,7 +492,7 @@ html.locked #hearts { z-index: 61; }
     <p class="after" id="after" aria-live="polite">&nbsp;</p>
     <div class="plan" id="plan" hidden>
       <p class="plan-day">Our Wednesday</p>
-      <ol class="tl">
+      <div class="secret"><ol class="tl">
         <li><span class="when">Morning</span><b>Coffee date</b><span>Perfecto Café or Caffè Artigiano, your pick</span></li>
         <li><span class="when">After coffee</span><b>Check in at the hotel</b><span>The Pinnacle, harbour view</span></li>
         <li><span class="when">Late morning</span><b>Explore</b><span>wander the Shipyards together</span></li>
@@ -496,15 +501,15 @@ html.locked #hearts { z-index: 61; }
         <li><span class="when">Afternoon</span><b>Chill at the hotel</b><span>no plans, just us</span></li>
         <li><span class="when">Before or after dinner</span><b>Swim &amp; hot tub</b><span>the hotel's indoor pool, bring your swimsuit</span></li>
         <li class="star"><span class="when">9:00 PM</span><b>Dinner at Dovetail</b><span>take the SeaBus across, or drive</span></li>
-      </ol>
+      </ol><span class="secret-tag">it's a surprise ♡</span></div>
       <p class="plan-day second">Our Thursday</p>
-      <ol class="tl">
+      <div class="secret"><ol class="tl">
         <li><span class="when">Morning</span><b>Breakfast together</b><span>a slow start with a harbour view</span></li>
         <li><span class="when">Before 11</span><b>Check out</b><span>no rush, just pack up</span></li>
         <li><span class="when">Late morning</span><b>Coffee, your choice</b><span>wherever you're craving</span></li>
         <li><span class="when">Late morning</span><b>Explore some more</b><span>everything we missed yesterday</span></li>
         <li class="star"><span class="when">Lunch</span><b>Lonsdale Quay Market, round two</b><span>because once wasn't enough</span></li>
-      </ol>
+      </ol><span class="secret-tag">it's a surprise ♡</span></div>
     </div>
     <button class="again" id="revealAll" type="button">Reveal it</button>
   </section>
