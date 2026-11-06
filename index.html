@@ -65,6 +65,17 @@ h2 { font-family: var(--f-script); font-weight: 400; font-size: clamp(44px, 11vw
 .unit small { display: block; margin-top: 6px; font-size: clamp(10px, 2.6vw, 12px); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
 
 /* Letter video */
+/* Theater mode while the letter plays */
+.theater-dim { position: fixed; inset: -10vh 0; z-index: 8; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(18,10,14,.86), rgba(8,4,6,.96));
+  transition: opacity 1.1s ease; }
+html.theater .theater-dim { opacity: 1; pointer-events: auto; cursor: pointer; }
+.letterbox { position: relative; z-index: 9; transition: box-shadow 1.1s ease, background 1.1s ease, transform 1.1s cubic-bezier(.2,.7,.2,1); }
+html.theater .letterbox { background: rgba(255,255,255,.08); transform: scale(1.02);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 0 80px 10px rgba(199,110,126,.35), 0 40px 90px -20px rgba(0,0,0,.8); }
+html.theater .sound { position: relative; z-index: 9; color: rgba(255,240,242,.55); transition: color 1.1s; }
+.mute, #hearts { transition: opacity 1.1s ease; }
+html.theater .mute, html.theater #hearts { opacity: .12; }
 .letterbox { margin: 30px auto 0; max-width: 420px; padding: 10px; border-radius: 28px; background: rgba(255,255,255,.65);
   box-shadow: 0 0 0 1px rgba(199,110,126,.18), 0 30px 70px -20px rgba(199,110,126,.55); }
 .screen { position: relative; aspect-ratio: 9 / 16; max-height: 76vh; width: 100%; border-radius: 20px; overflow: hidden;
@@ -343,6 +354,7 @@ html.locked #hearts { z-index: 61; }
 @media (prefers-reduced-motion: reduce) {
   .seal-btn, .intro .tap { animation: none; }
   .tile, .tile.flip, .tile.win, .row.shake, .plan.in li, .jar svg, .note { animation: none !important; }
+  .theater-dim, .letterbox { transition-duration: .01s !important; } html.theater .letterbox { transform: none; }
   .love-ov * { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
   .fall { display: none; }
   .env-flap, .card, .env { transition: none; }
@@ -395,6 +407,7 @@ html.locked #hearts { z-index: 61; }
     <svg class="divider" viewBox="0 0 120 18" aria-hidden="true"><path d="M0 9h46M74 9h46" stroke="currentColor" stroke-width="1"/><path d="M60 15s-7-4.3-8.8-8.4C49.9 3.6 51.8 1 54.8 1c2 0 3.3 1.1 5.2 2.8C61.9 2.1 63.2 1 65.2 1c3 0 4.9 2.6 3.6 5.6C67 10.7 60 15 60 15z" fill="currentColor"/></svg>
     <h2>My letter to you</h2>
     <p class="sub">I wrote down everything I feel, then I said it out loud for you.</p>
+    <div class="theater-dim" id="theaterDim" aria-hidden="true"></div>
     <div class="letterbox"><div class="screen" id="vidScreen"></div></div>
     <p class="sound">turn your sound on ♡</p>
   </section>
@@ -565,6 +578,20 @@ document.getElementById("openBtn").addEventListener("click", () => {
   letter.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
   const v = document.getElementById("mainVid"); if (v) v.play().catch(() => {});
 });
+(function () {
+  const v = document.getElementById("mainVid"), dim = document.getElementById("theaterDim"), root = document.documentElement;
+  if (!v) return;
+  let t;
+  const on = () => { clearTimeout(t); root.classList.add("theater");
+    const r = v.getBoundingClientRect();
+    if (r.top < 0 || r.bottom > innerHeight) v.closest(".letterbox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }); };
+  const off = (delay = 0) => { clearTimeout(t); t = setTimeout(() => root.classList.remove("theater"), delay); };
+  v.addEventListener("play", on);
+  v.addEventListener("pause", () => off(v.ended ? 0 : 400));
+  v.addEventListener("ended", () => off(1200));
+  dim.addEventListener("click", () => { v.pause(); off(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && root.classList.contains("theater")) { v.pause(); off(); } });
+})();
 
 // Photos
 gallery.innerHTML = PHOTOS.map((p, i) => {
