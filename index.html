@@ -517,7 +517,7 @@ html.locked #hearts { z-index: 61; }
 <script>
 /* ===== Edit everything here ===== */
 const START = "2024-11-07";            // the day you got together
-const MAIN_VIDEO = "";                 // e.g. "media/letter.mp4"
+const MAIN_VIDEO = "media/letter.mp4";                 // e.g. "media/letter.mp4"
 const PHOTOS = [
   { src: "media/photo1.jpg", caption: "our first picture together" },
   { src: "media/photo-pv.jpg", caption: "Puerto Vallarta, our first trip abroad", pos: "50% 78%" },
@@ -558,7 +558,7 @@ const isVideo = s => /\.(mp4|mov|webm|m4v)$/i.test(s);
 
 // Letter
 document.getElementById("vidScreen").innerHTML = MAIN_VIDEO
-  ? `<video id="mainVid" src="${MAIN_VIDEO}" controls playsinline preload="metadata"></video>`
+  ? `<video id="mainVid" src="${MAIN_VIDEO}" poster="media/letter.jpg" controls playsinline preload="metadata"></video>`
   : `<div class="empty"><span class="script">your letter</span><span>video goes here</span></div>`;
 document.getElementById("openBtn").addEventListener("click", () => {
   sfx.letter();
