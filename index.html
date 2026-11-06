@@ -571,7 +571,7 @@ const isVideo = s => /\.(mp4|mov|webm|m4v)$/i.test(s);
 
 // Letter
 document.getElementById("vidScreen").innerHTML = MAIN_VIDEO
-  ? `<video id="mainVid" src="${MAIN_VIDEO}" poster="media/letter.jpg" controls playsinline preload="metadata"></video>`
+  ? `<video id="mainVid" src="${MAIN_VIDEO}" poster="media/letter-cover.jpg" controls playsinline preload="metadata"></video>`
   : `<div class="empty"><span class="script">your letter</span><span>video goes here</span></div>`;
 document.getElementById("openBtn").addEventListener("click", () => {
   sfx.letter();
