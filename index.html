@@ -7,31 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Two Years">
 <meta name="format-detection" content="telephone=no">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}
-/* iPhone polish */
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-button, .key, .coupon, .arch, .jar, .seal-btn, .clip video, .lightbox { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-#foil { touch-action: none; }
-.intro { touch-action: none; overscroll-behavior: contain; }
-.kb, .board, .scratch, .coupons, .jar, .seal-btn, .env { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.reel, .coupons { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
-
-/* Slow cinematic drift on background videos */
-.vbg video, .end-bg video { animation: drift 26s ease-in-out infinite alternate; will-change: transform; }
-@keyframes drift { from { transform: scale(1.08); } to { transform: scale(1) translateY(-1.5%); } }
-@media (prefers-reduced-motion: reduce) { .vbg video, .end-bg video { animation: none; } h2.rv.pre, .sub.rv.pre { filter: none; } }
-
-/* Pinned full-screen scenes with long, soft edges */
-.vbg-scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
-.vbg.vbg-scene { overflow: visible; }
-.vbg-stick { position: -webkit-sticky; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-.vbg-stick video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.vbg-scene::after { background: linear-gradient(to bottom, rgba(52,30,38,.12), rgba(52,30,38,.38)); }
-.vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
-.end-bg { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); }
-</style>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Two Years, Us</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,7 +131,7 @@ html.theater .mute, html.theater #hearts { opacity: .12; }
 /* Ending */
 .end { position: relative; isolation: isolate; padding-block: 140px 130px; min-height: 88vh; min-height: 88svh; display: grid; align-content: center; justify-items: center; gap: 8px; }
 /* Video backgrounds behind sections */
-#surprise { position: relative; isolation: isolate; padding-block: 62vh 220px; padding-top: 62svh; }
+#surprise { position: relative; isolation: isolate; padding-block: 62vh 480px; padding-top: 62svh; }
 .vbg { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); }
 .vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); }
@@ -421,6 +397,36 @@ html.locked #hearts { z-index: 61; }
   .end svg { animation: none; }
   .arch .ph img, .open-btn { transition: none; }
 }
+
+/* iPhone polish */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+button, .key, .coupon, .arch, .jar, .seal-btn, .clip video, .lightbox { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+#foil { touch-action: none; }
+.intro { touch-action: none; overscroll-behavior: contain; }
+.kb, .board, .scratch, .coupons, .jar, .seal-btn, .env { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.reel, .coupons { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+
+/* Slow cinematic drift on background videos */
+.vbg video, .end-bg video { animation: drift 26s ease-in-out infinite alternate; will-change: transform; }
+@keyframes drift { from { transform: scale(1.08); } to { transform: scale(1) translateY(-1.5%); } }
+@media (prefers-reduced-motion: reduce) { .vbg video, .end-bg video { animation: none; } h2.rv.pre, .sub.rv.pre { filter: none; } }
+
+/* Pinned full-screen scenes with long, soft edges */
+.vbg-scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
+.vbg.vbg-scene { overflow: visible; }
+.vbg-stick { position: -webkit-sticky; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.vbg-stick video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vbg-scene::after { background: linear-gradient(to bottom, rgba(52,30,38,.12), rgba(52,30,38,.38)); }
+.vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
+.end-bg { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); }
+
+/* Campfire dissolves straight into the hike, and the hike fills to the very bottom */
+html { background: #2b1b21; }
+#surprise .vbg-scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); }
+.end-bg { top: -440px; bottom: calc(-1 * env(safe-area-inset-bottom, 0px)); pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 220px, #000 440px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 220px, #000 440px); }
 </style>
 </head>
 <body>
@@ -603,7 +609,8 @@ const CLIPS = [
   { src: "media/clip-bruno.mp4", poster: "media/clip-bruno.jpg", caption: "Bruno Mars, first concert together" },
   { src: "media/clip-funny.mp4", poster: "media/clip-funny.jpg", caption: "Funny moment, us being us", wide: true },
   { src: "media/clip-maple.mp4", poster: "media/clip-maple.jpg", caption: "Maple, the first time we met him and his brother" },
-  { src: "media/clip-eating.mp4", poster: "media/clip-eating.jpg", caption: "Snack break, never not eating 😭", wide: true }
+  { src: "media/clip-eating.mp4", poster: "media/clip-eating.jpg", caption: "Snack break, never not eating 😭", wide: true },
+  { src: "media/clip-soya.mp4", poster: "media/clip-soya.jpg", caption: "My soya sauce", wide: true }
 ];
 /* ================================= */
 
