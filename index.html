@@ -429,6 +429,13 @@ html { background: #2b1b21; }
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 160px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 160px, #000 320px); }
 #endVid { object-position: 70% 75%; }
 #surprise .vbg-scene { bottom: -360px; }
+
+/* Letter video: frame matches the video exactly (9:16), no side bars */
+.letterbox { width: fit-content; max-width: 100%; }
+.screen { width: auto; max-height: none; aspect-ratio: 9 / 16; background: #000;
+  height: min(76vh, 711px, calc((100vw - 60px) * 16 / 9));
+  height: min(76svh, 711px, calc((100vw - 60px) * 16 / 9)); }
+.screen video { background: #000; }
 </style>
 </head>
 <body>
