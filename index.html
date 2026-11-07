@@ -436,6 +436,10 @@ html { background: #2b1b21; }
   height: min(76vh, 711px, calc((100vw - 60px) * 16 / 9));
   height: min(76svh, 711px, calc((100vw - 60px) * 16 / 9)); }
 .screen video { background: #000; }
+
+/* Centre a photo that ends up alone on the last row */
+@media (max-width: 619px) { .gallery .arch:last-child:nth-child(2n+1) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); } }
+@media (min-width: 620px) { .gallery .arch:last-child:nth-child(3n+1) { grid-column: 1 / -1; justify-self: center; width: calc(33.333% - 11px); } }
 </style>
 </head>
 <body>
@@ -611,7 +615,8 @@ const PHOTOS = [
   { src: "media/photo-cheam.jpg", caption: "Mt. Cheam, bucket list hike completed", pos: "52% 70%" },
   { src: "media/photo-maple1.jpg", caption: "first photo with Maple", pos: "50% 55%" },
   { src: "media/photo-anniv1.jpg", caption: "first anniversary", pos: "50% 35%" },
-  { src: "media/photo-sleepover.jpg", caption: "family sleepover", pos: "50% 52%" }
+  { src: "media/photo-sleepover.jpg", caption: "family sleepover", pos: "50% 52%" },
+  { src: "media/photo-study.jpg", caption: "study date", pos: "50% 36%" }
 ];
 const CLIPS = [
   { src: "media/clip-bruno.mp4", poster: "media/clip-bruno.jpg", caption: "Bruno Mars, first concert together" },
@@ -635,8 +640,10 @@ const isVideo = s => /\.(mp4|mov|webm|m4v)$/i.test(s);
     let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
     let anchor = new Date(start); anchor.setMonth(start.getMonth() + months);
     if (anchor > now) { months--; anchor = new Date(start); anchor.setMonth(start.getMonth() + months); }
-    let s = Math.max(0, Math.floor((now - anchor) / 1000));
-    const d = Math.floor(s / 86400); s -= d * 86400;
+    // count calendar days (stays correct across daylight-saving changes)
+    let dayA = new Date(anchor), d = 0;
+    while (d < 40) { const nx = new Date(dayA); nx.setDate(nx.getDate() + 1); if (nx > now) break; dayA = nx; d++; }
+    let s = Math.max(0, Math.floor((now - dayA) / 1000));
     const h = Math.floor(s / 3600); s -= h * 3600;
     const m = Math.floor(s / 60); s -= m * 60;
     [Math.max(0, months), d, pad(h), pad(m), pad(s)].forEach((v, i) => { if (els[i].textContent != v) els[i].textContent = v; });
