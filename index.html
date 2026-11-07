@@ -427,7 +427,7 @@ html { background: #2b1b21; }
 #surprise .vbg-scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); }
 .end-bg { top: 0; bottom: calc(-1 * env(safe-area-inset-bottom, 0px)); pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 160px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.6) 160px, #000 320px); }
-#endVid { object-position: 70% 75%; }
+#endVid { object-position: 50% 60%; animation: none !important; transform: none; }
 #surprise .vbg-scene { bottom: -360px; }
 
 /* Letter video: frame matches the video exactly (9:16), no side bars */
@@ -583,7 +583,7 @@ html { background: #2b1b21; }
   </section>
 
   <footer class="wrap end">
-    <div class="end-bg" aria-hidden="true"><video id="endVid" src="media/bg-hike.mp4" poster="media/bg-hike.jpg" muted loop playsinline preload="metadata"></video></div>
+    <div class="end-bg" aria-hidden="true"><video id="endVid" src="media/bg-hike0.mp4" poster="media/bg-hike0.jpg" muted loop playsinline preload="metadata"></video></div>
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     <p>Two years down, forever to go. Happy anniversary, mahal.</p>
     <span class="ily">I love you</span>
