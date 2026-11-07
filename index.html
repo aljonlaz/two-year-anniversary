@@ -155,15 +155,17 @@ html.theater .mute, html.theater #hearts { opacity: .12; }
 /* Ending */
 .end { position: relative; isolation: isolate; padding-block: 140px 130px; min-height: 88vh; min-height: 88svh; display: grid; align-content: center; justify-items: center; gap: 8px; }
 /* Video backgrounds behind sections */
-#reasons { position: relative; isolation: isolate; padding-block: 62vh 200px; padding-top: 62svh; }
+#surprise { position: relative; isolation: isolate; padding-block: 62vh 220px; padding-top: 62svh; }
 .vbg { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); }
 .vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); }
 .vbg video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .vbg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(52,30,38,.32), rgba(52,30,38,.42)); }
 .vbg.vbg-top::after { background: linear-gradient(to bottom, rgba(52,30,38,.28), rgba(52,30,38,.12) 55%, rgba(52,30,38,.3)); }
-#reasons > h2, #reasons > .sub, .hero h1, .hero .to, .hero .years, .hero .timer .lead { color: #fff; text-shadow: 0 2px 16px rgba(40,20,28,.55); }
-.hero .to, .hero .timer .lead, #reasons > .sub { color: rgba(255,242,244,.92); }
+#surprise > h2, #surprise > .sub, #surprise .after, .hero h1, .hero .to, .hero .years, .hero .timer .lead { color: #fff; text-shadow: 0 2px 16px rgba(40,20,28,.55); }
+.hero .to, .hero .timer .lead, #surprise > .sub { color: rgba(255,242,244,.92); }
+#surprise #revealAll { color: #fff; border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.08); }
+#surprise .plan { background: rgba(255,250,249,.9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .hero .unit { background: rgba(255,250,249,.84); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .end-bg { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 14%, #000 34%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 14%, #000 34%); }
@@ -484,7 +486,6 @@ html.locked #hearts { z-index: 61; }
   </section>
 
   <section class="wrap" id="reasons">
-    <div class="vbg vbg-scene" aria-hidden="true"><div class="vbg-stick"><video src="media/bg-campfire.mp4" poster="media/bg-campfire.jpg" muted loop playsinline preload="metadata" style="object-position:72% 40%"></video></div></div>
     <h2>Reasons I love you</h2>
     <p class="sub">Tap the jar. There's always another one.</p>
     <button class="jar" id="jar" type="button" aria-label="Take a reason from the jar">
@@ -529,6 +530,7 @@ html.locked #hearts { z-index: 61; }
   </section>
 
   <section class="wrap" id="surprise">
+    <div class="vbg vbg-scene" aria-hidden="true"><div class="vbg-stick"><video src="media/bg-campfire.mp4" poster="media/bg-campfire.jpg" muted loop playsinline preload="metadata" style="object-position:72% 40%"></video></div></div>
     <h2>One more surprise</h2>
     <p class="sub">Scratch the heart with your finger.</p>
     <div class="scratch" id="scratch">
