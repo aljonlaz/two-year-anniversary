@@ -20,6 +20,17 @@ button, .key, .coupon, .arch, .jar, .seal-btn, .clip video, .lightbox { -webkit-
 .vbg video, .end-bg video { animation: drift 26s ease-in-out infinite alternate; will-change: transform; }
 @keyframes drift { from { transform: scale(1.08); } to { transform: scale(1) translateY(-1.5%); } }
 @media (prefers-reduced-motion: reduce) { .vbg video, .end-bg video { animation: none; } h2.rv.pre, .sub.rv.pre { filter: none; } }
+
+/* Pinned full-screen scenes with long, soft edges */
+.vbg-scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
+.vbg.vbg-scene { overflow: visible; }
+.vbg-stick { position: -webkit-sticky; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.vbg-stick video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vbg-scene::after { background: linear-gradient(to bottom, rgba(52,30,38,.12), rgba(52,30,38,.38)); }
+.vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 320px), rgba(0,0,0,.55) calc(100% - 150px), transparent 100%); }
+.end-bg { -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.55) 150px, #000 320px); }
 </style>
 <title>Two Years, Us</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +155,7 @@ html.theater .mute, html.theater #hearts { opacity: .12; }
 /* Ending */
 .end { position: relative; isolation: isolate; padding-block: 140px 130px; min-height: 88vh; min-height: 88svh; display: grid; align-content: center; justify-items: center; gap: 8px; }
 /* Video backgrounds behind sections */
-#reasons { position: relative; isolation: isolate; padding-block: 120px 120px; }
+#reasons { position: relative; isolation: isolate; padding-block: 62vh 200px; padding-top: 62svh; }
 .vbg { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.5) 12%, #000 28%, #000 72%, rgba(0,0,0,.5) 88%, transparent 100%); }
 .vbg.vbg-top { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.5) 82%, transparent 100%); }
@@ -473,7 +484,7 @@ html.locked #hearts { z-index: 61; }
   </section>
 
   <section class="wrap" id="reasons">
-    <div class="vbg" aria-hidden="true"><video src="media/bg-campfire.mp4" poster="media/bg-campfire.jpg" muted loop playsinline preload="metadata" style="object-position:28% 50%"></video></div>
+    <div class="vbg vbg-scene" aria-hidden="true"><div class="vbg-stick"><video src="media/bg-campfire.mp4" poster="media/bg-campfire.jpg" muted loop playsinline preload="metadata" style="object-position:72% 40%"></video></div></div>
     <h2>Reasons I love you</h2>
     <p class="sub">Tap the jar. There's always another one.</p>
     <button class="jar" id="jar" type="button" aria-label="Take a reason from the jar">
