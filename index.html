@@ -125,7 +125,15 @@ html.theater .mute, html.theater #hearts { opacity: .12; }
 .swipe { font-style: italic; color: var(--soft); font-size: 15px; }
 
 /* Ending */
-.end { padding-block: 70px 110px; display: grid; justify-items: center; gap: 8px; }
+.end { position: relative; isolation: isolate; padding-block: 140px 130px; min-height: 88vh; display: grid; align-content: center; justify-items: center; gap: 8px; }
+.end-bg { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%); mask-image: linear-gradient(to bottom, transparent 0%, #000 28%); }
+.end-bg video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display: block; filter: saturate(.9) contrast(.96); }
+.end-bg::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(74,45,54,.08) 0%, rgba(74,45,54,.3) 45%, rgba(52,30,38,.5) 80%, rgba(52,30,38,.65) 100%); }
+footer.end > p, footer.end .ily, footer.end .sig { color: #fff; text-shadow: 0 2px 18px rgba(52,30,38,.55); }
+footer.end .sig { color: rgba(255,240,242,.92); }
+footer.end svg { color: #fff; filter: drop-shadow(0 2px 10px rgba(52,30,38,.5)); }
 .end p { font-size: clamp(22px, 5vw, 28px); font-style: italic; max-width: 26ch; margin: 0; text-wrap: balance; }
 .end .ily { font-family: var(--f-script); font-size: clamp(64px, 17vw, 104px); line-height: 1; color: var(--rose-deep); margin-top: 12px; }
 .end .sig { font-size: 18px; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
@@ -515,6 +523,7 @@ html.locked #hearts { z-index: 61; }
   </section>
 
   <footer class="wrap end">
+    <div class="end-bg" aria-hidden="true"><video id="endVid" src="media/bg-hike.mp4" poster="media/bg-hike.jpg" muted loop playsinline preload="metadata"></video></div>
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     <p>Two years down, forever to go. Happy anniversary, mahal.</p>
     <span class="ily">I love you</span>
@@ -979,6 +988,14 @@ const sfx = (function () {
   paint();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!scratched && !done) paint(); });
   addEventListener("resize", () => { if (!scratched && !done) paint(); });
+})();
+
+// Ending background: play only while it's on screen
+(function () {
+  const v = document.getElementById("endVid"); if (!v) return;
+  if (reduce) { v.removeAttribute("loop"); return; }
+  const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: .15 });
+  io.observe(v.parentElement);
 })();
 
 // Drifting hearts
