@@ -1066,9 +1066,20 @@ const sfx = (function () {
 // Background videos: play only while on screen
 (function () {
   const vids = [...document.querySelectorAll(".vbg video, #endVid")];
-  if (reduce) return;
-  const io = new IntersectionObserver(es => es.forEach(e => { const v = e.target.querySelector("video"); if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .1 });
+  const visible = new Set();
+  vids.forEach(v => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", ""); });
+  const tryPlay = v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target.querySelector("video");
+    if (e.isIntersecting) { visible.add(v); if (v.preload !== "auto") { v.preload = "auto"; } tryPlay(v); }
+    else { visible.delete(v); v.pause(); }
+  }), { threshold: .05 });
   vids.forEach(v => io.observe(v.parentElement));
+  // iPhone Low Power Mode and some in-app browsers block muted autoplay until the first touch: start them then
+  const kick = () => visible.forEach(v => { if (v.paused) tryPlay(v); });
+  ["touchstart", "pointerdown", "click", "keydown"].forEach(ev => addEventListener(ev, kick, { passive: true }));
+  addEventListener("scroll", () => { clearTimeout(kick.t); kick.t = setTimeout(kick, 150); }, { passive: true });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) kick(); });
 })();
 
 // Drifting hearts
